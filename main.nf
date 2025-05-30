@@ -45,5 +45,4 @@ workflow {
     ch_versions = ch_versions.mix( splitdir.out.versions )
 
     MIXEMT(ch_bam)
-    MIXEMT.out.mixemt.view()
 }
