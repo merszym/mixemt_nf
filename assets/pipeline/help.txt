@@ -1,0 +1,2 @@
+
+nextflow run merszym/mixemt_nf --split split/
