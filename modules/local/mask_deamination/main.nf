@@ -3,7 +3,7 @@ process MASK_DEAMINATION{
     label 'local'
 
     input:
-    tuple val(meta), path(bam),
+    tuple val(meta), path(bam)
 
     output:
     tuple val(meta), path("masked_${bam}"), emit: bam
