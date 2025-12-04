@@ -33,10 +33,8 @@ workflow splitdir {
         SAMTOOLS_SORT(ch_bams)
         ch_versions = ch_versions.mix(SAMTOOLS_SORT.out.versions.first())
 
-        SAMTOOLS_INDEX(SAMTOOLS_SORT.out.bam)
-        ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions.first())
 
     emit:
-        bams = SAMTOOLS_INDEX.out.bam
+        bams = SAMTOOLS_SORT.out.bam
         versions = ch_versions
 }

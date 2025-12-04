@@ -4,11 +4,11 @@ This is a _really_ simple pipeline that calls mtDNA haplogroup-mixes with mixEMT
 
 Given a folder with pre-filtered BAM or FASTQ files (unique Hominin mtDNA sequences), this pipeline runs mixEMT with very sensitive settings (r=5, f=0.3, and R=2) on each of the files individually and saves the output to a text-file.
 
-Each sequence is trimmed before haplogroup assignment to mitigate ancient DNA damage effects
+The quality-score of each sequences end bases is set to 0 before haplogroup assignment (--trim flag) to mitigate ancient DNA damage effects and the mapping-quality filter threshold for mixemt is therefore set to 0 (so filter for MQ yourself beforehand).
 
 ## Requirements
 
-- singularity
+- singularity 
 - nextflow v22.10 (or larger)
 
 ## Run the pipeline

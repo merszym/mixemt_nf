@@ -14,7 +14,7 @@ process MIXEMT {
     script:
     def args = task.ext.args ?: ''
     """    
-    mixemt $args -s ${meta.id} ${bam} > ${meta.id}_mixemt.txt
+    mixemt $args -q 0 -s ${meta.id} ${bam} > ${meta.id}_mixemt.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
