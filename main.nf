@@ -3,7 +3,7 @@
 // include workflows for different executions of the pipeline
 include { splitdir }         from './workflows/01_splitdir'
 include { MASK_DEAMINATION } from './modules/local/mask_deamination'
-include { SAMTOOLS_INDEX }  from '../modules/local/samtools_index'
+include { SAMTOOLS_INDEX }   from './modules/local/samtools_index'
 include { MIXEMT   }         from './modules/local/mixemt_mixemt'
 
 

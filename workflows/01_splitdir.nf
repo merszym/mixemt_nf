@@ -1,5 +1,4 @@
 include { SAMTOOLS_SORT }   from '../modules/local/samtools_sort'
-include { SAMTOOLS_INDEX }  from '../modules/local/samtools_index'
 include { SAMTOOLS_FQ2BAM } from '../modules/local/samtools_fq2bam'
 
 // some required functions
