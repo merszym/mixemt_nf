@@ -6,11 +6,12 @@ process MASK_DEAMINATION{
     tuple val(meta), path(bam), path(bai)
 
     output:
-    tuple val(meta), path("masked_${bam}"), path(bai), emit: bam
+    tuple val(meta), path("masked_${bam}"), path("masked_${bai}"), emit: bam
 
     script:
     def args = task.ext.args
     """
     mask_qual_scores.py ${bam} $args
+    cp ${bai} "masked_${bai}"
     """
 }
