@@ -3,10 +3,10 @@ process MASK_DEAMINATION{
     label 'local'
 
     input:
-    tuple val(meta), path(bam)
+    tuple val(meta), path(bam), path(bai)
 
     output:
-    tuple val(meta), path("masked_${bam}"), emit: bam
+    tuple val(meta), path("masked_${bam}"), path(bai), emit: bam
 
     script:
     def args = task.ext.args
