@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 // include workflows for different executions of the pipeline
-include { splitdir } from './workflows/01_splitdir'
-include { MIXEMT   } from './modules/local/mixemt_mixemt'
+include { splitdir }         from './workflows/01_splitdir'
+include { MASK_DEAMINATION } from './modules/local/mask_deamination'
+include { MIXEMT   }         from './modules/local/mixemt_mixemt'
 
 
 //
@@ -44,5 +45,17 @@ workflow {
     ch_bam = splitdir.out.bams
     ch_versions = ch_versions.mix( splitdir.out.versions )
 
-    MIXEMT(ch_bam)
+    //
+    // 2. Mask first and last N basepairs to have quality 0 
+    //
+
+    MASK_DEAMINATION(ch_bam)
+
+    ch_masked_bam = MASK_DEAMINATION.out.bam
+
+    //
+    // 3. Run MixEMT
+    //
+
+    MIXEMT(ch_masked_bam)
 }
